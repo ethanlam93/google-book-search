@@ -31,11 +31,16 @@ class Saved extends Component {
   };
 
   render() {
+    const style = {
+      borderRadius: "55px",
+    background: "#FFFFFF",
+    boxShadow: "29px 29px 58px #d9d9d9"
+  }
     return (
       <Container>
         <Row>
           <Col size="md-12">
-            <Jumbotron>
+            <Jumbotron style={style}>
               <h1 className="text-center">
                 <strong>(React) Google Books Search</strong>
               </h1>

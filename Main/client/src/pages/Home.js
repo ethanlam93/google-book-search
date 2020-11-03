@@ -9,6 +9,8 @@ import { Col, Row, Container } from "../components/Grid";
 import { List } from "../components/List";
 
 class Home extends Component {
+
+
   state = {
     books: [],
     q: "",
@@ -24,20 +26,21 @@ class Home extends Component {
 
   getBooks = () => {
     API.getBooks(this.state.q)
-      .then(res =>{
+      .then(res => {
         console.log(res);
         this.setState({
           books: res.data
         })
       }
-        
+
       )
-      .catch((err) =>{
+      .catch((err) => {
         console.log(err)
         this.setState({
           books: [],
           message: "No New Books Found, Try a Different Query"
-        })}
+        })
+      }
       );
   };
 
@@ -62,11 +65,16 @@ class Home extends Component {
   };
 
   render() {
-    return (
+    const style = {
+      borderRadius: "55px",
+    background: "#FFFFFF",
+    boxShadow: "29px 29px 58px #d9d9d9"
+  }
+  return(
       <Container>
         <Row>
           <Col size="md-12">
-            <Jumbotron>
+            <Jumbotron style={style}>
               <h1 className="text-center">
                 <strong>(React) Google Books Search</strong>
               </h1>
@@ -102,7 +110,7 @@ class Home extends Component {
                           onClick={() => this.handleBookSave(book.id)}
                           className="btn btn-primary ml-2"
                         >
-                          Save
+          Save
                         </button>
                       )}
                     />
@@ -115,7 +123,7 @@ class Home extends Component {
           </Col>
         </Row>
         <Footer />
-      </Container>
+      </Container >
     );
   }
 }
